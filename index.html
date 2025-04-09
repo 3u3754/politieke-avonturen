@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politieke Avonturen - Nederlands Geschiedenis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 50px;
+            background-image: url('https://www.w3schools.com/w3images/forest.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .choice {
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        .choice:hover {
+            background-color: #45a049;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welkom bij Politieke Avonturen!</h1>
+    <p id="game-description">Reis door de Nederlandse politiek van 1815 tot 1917. Maak keuzes en ontdek wat er gebeurt!</p>
+    <button class="button" onclick="startGame()">Start Spel</button>
+
+    <div id="game-screen" style="display:none;">
+        <h2 id="question"></h2>
+        <div class="choices">
+            <div class="choice" onclick="makeChoice(1)" id="choice1"></div>
+            <div class="choice" onclick="makeChoice(2)" id="choice2"></div>
+            <div class="choice" onclick="makeChoice(3)" id="choice3"></div>
+        </div>
+        <img id="image" class="image" src="" alt="">
+    </div>
+
+    <div id="result-screen" style="display:none;">
+        <h2>Jouw Uitkomst</h2>
+        <p id="result"></p>
+        <button class="button" onclick="restartGame()">Speel Opnieuw</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

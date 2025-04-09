@@ -1,14 +1,9 @@
-// Dit bestand bevat de spel logica voor Politieke Avonturen
-
 let choices = []; // Array om keuzes van de speler op te slaan
 let score = 0; // Score om de democratische waarde van Nederland te berekenen
-let opstand = false; // Variable om bij te houden of er een opstand komt
 
 // Functie voor het maken van keuzes over de politieke stromingen
 function makeChoice(choice) {
     choices.push(choice); // Voeg de keuze toe aan de array
-
-    // Verhoog de score afhankelijk van de keuze
     if (choice === 'liberaal') {
         score += 10;
     } else if (choice === 'socialisme') {
@@ -25,8 +20,6 @@ function makeChoice(choice) {
 // Functie voor het maken van keuzes over beleid (kiesrecht)
 function makePolicyChoice(choice) {
     choices.push(choice); // Voeg de keuze toe aan de array
-
-    // Verhoog de score afhankelijk van de keuze
     if (choice === 'uitbreid') {
         score += 15;
     } else if (choice === 'algemeen') {
@@ -43,8 +36,6 @@ function makePolicyChoice(choice) {
 // Functie voor het maken van keuzes over de schoolstrijd
 function makeSchoolStruggleChoice(choice) {
     choices.push(choice); // Voeg de keuze toe aan de array
-
-    // Verhoog de score afhankelijk van de keuze
     if (choice === 'schoolstrijd') {
         score -= 5; // Slechte keuze
     } else if (choice === 'neutraliteit') {
@@ -59,8 +50,6 @@ function makeSchoolStruggleChoice(choice) {
 // Functie voor het maken van keuzes over sociale kwesties
 function makeSocialChoice(choice) {
     choices.push(choice);
-
-    // Verhoog de score afhankelijk van de keuze
     if (choice === 'arbeidersrechten') {
         score += 15;
     } else if (choice === 'geenactie') {
@@ -75,38 +64,19 @@ function makeSocialChoice(choice) {
 // Functie voor het maken van keuzes over vrouwenrechten
 function makeWomenRightsChoice(choice) {
     choices.push(choice);
-
-    // Verhoog de score afhankelijk van de keuze
     if (choice === 'stemrecht') {
         score += 20;
     } else if (choice === 'geenstemrecht') {
         score -= 10; // Slechte keuze
     }
 
-    // Controleer of er een opstand komt
-    checkRevolutie();
-
-    // Verberg het vrouwenrechten scherm en toon het eindresultaat
+    // Toon het eindresultaat
     document.getElementById('women-rights-screen').style.display = 'none';
     document.getElementById('end-screen').style.display = 'block';
 
-    // Als er geen opstand is, toon de score
-    if (!opstand) {
-        document.getElementById('score').textContent = score;
-        document.getElementById('result').textContent = getResult();
-    } else {
-        // Als er een opstand is, toon de video
-        document.getElementById('video-container').style.display = 'block';
-        document.getElementById('video').src = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Opstand video (voorbeeld)
-    }
-}
-
-// Functie die controleert of er een opstand komt
-function checkRevolutie() {
-    // Slechte keuzes die leiden tot een opstand
-    if (choices.includes('confessionalisme') && choices.includes('beperk')) {
-        opstand = true; // Opstand komt door slechte keuzes
-    }
+    // Toon de score en de uitslag
+    document.getElementById('score').textContent = `${score} / 5`;
+    document.getElementById('result').textContent = getResult();
 }
 
 // Functie om de democratische score te berekenen
@@ -116,7 +86,7 @@ function getResult() {
     } else if (score >= 30) {
         return "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
     } else {
-        return "Nederland is niet zo democratisch geworden en de onvrede leidt tot een opstand!";
+        return "Nederland is niet zo democratisch geworden. De onvrede leidt tot een opstand!";
     }
 }
 

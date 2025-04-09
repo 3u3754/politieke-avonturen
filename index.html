@@ -49,46 +49,29 @@
         <p>Welkom, je speelt als de leider van Nederland in de 19e eeuw. Maak belangrijke keuzes om te bepalen hoe Nederland zich ontwikkelt.</p>
         
         <div id="game-screen">
-            <h2>Keuze 1: Hoe ga je het land besturen?</h2>
-            <button class="btn" onclick="makeChoice('autocratisch')">A) Autocratisch - Beperk de vrijheid</button>
-            <button class="btn" onclick="makeChoice('liberaal')">B) Liberale benadering - Meer vrijheid, maar grip houden</button>
-            <button class="btn" onclick="makeChoice('democratisch')">C) Democratisch - Geef meer mensen invloed</button>
+            <h2>Keuze 1: Welke politieke stroming moet je steunen?</h2>
+            <button class="btn" onclick="makeChoice('liberaal')">A) Liberalisme - Meer vrijheid voor de burgers</button>
+            <button class="btn" onclick="makeChoice('socialisme')">B) Socialisme - Meer rechten voor de arbeiders</button>
+            <button class="btn" onclick="makeChoice('confessionalisme')">C) Confessionalisme - Godsdienst is belangrijk in het beleid</button>
+        </div>
+
+        <div id="policy-screen" style="display: none;">
+            <h2>Keuze 2: Wat doe je met het kiesrecht?</h2>
+            <button class="btn" onclick="makePolicyChoice('beperk')">A) Beperk het kiesrecht tot rijke mannen</button>
+            <button class="btn" onclick="makePolicyChoice('uitbreid')">B) Breid het kiesrecht uit naar alle mannen</button>
+            <button class="btn" onclick="makePolicyChoice('algemeen')">C) Geef vrouwen ook kiesrecht</button>
         </div>
 
         <div id="video-container">
             <h2>De Opstand!</h2>
             <p>Door je slechte keuzes is er een opstand uitgebroken!</p>
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <button class="btn" onclick="restartGame()">Speel opnieuw</button>
         </div>
     </div>
 
-    <script>
-        // Functie die de keuze van de speler verwerkt
-        function makeChoice(choice) {
-            var gameScreen = document.getElementById('game-screen');
-            var videoContainer = document.getElementById('video-container');
-
-            if (choice === 'autocratisch') {
-                // Verkeerde keuze leidt tot opstand
-                gameScreen.style.display = 'none';
-                videoContainer.style.display = 'block';
-            } else if (choice === 'liberaal') {
-                // Neutraal scenario
-                gameScreen.style.display = 'none';
-                alert('Je hebt gekozen voor een liberale benadering. Er ontstaan spanningen, maar geen opstand.');
-            } else if (choice === 'democratisch') {
-                // Goede keuze leidt tot positieve uitkomst
-                gameScreen.style.display = 'none';
-                alert('Je hebt gekozen voor een democratische benadering! Nederland ontwikkelt zich rustig en stabiel.');
-            }
-        }
-
-        // Functie om het spel opnieuw te starten
-        function restartGame() {
-            location.reload();
-        }
-    </script>
+    <!-- Verwijs naar game.js voor de logica -->
+    <script src="game.js"></script>
 
 </body>
 </html>

@@ -51,13 +51,45 @@ function makeSchoolStruggleChoice(choice) {
         score += 10;
     }
 
+    // Verberg het schoolstrijd scherm en toon het sociale kwesties scherm
+    document.getElementById('school-struggle-screen').style.display = 'none';
+    document.getElementById('social-issue-screen').style.display = 'block';
+}
+
+// Functie voor het maken van keuzes over sociale kwesties
+function makeSocialChoice(choice) {
+    choices.push(choice);
+
+    // Verhoog de score afhankelijk van de keuze
+    if (choice === 'arbeidersrechten') {
+        score += 15;
+    } else if (choice === 'geenactie') {
+        score -= 10; // Slechte keuze
+    }
+
+    // Verberg het sociale kwestie scherm en toon de vrouwenrechten scherm
+    document.getElementById('social-issue-screen').style.display = 'none';
+    document.getElementById('women-rights-screen').style.display = 'block';
+}
+
+// Functie voor het maken van keuzes over vrouwenrechten
+function makeWomenRightsChoice(choice) {
+    choices.push(choice);
+
+    // Verhoog de score afhankelijk van de keuze
+    if (choice === 'stemrecht') {
+        score += 20;
+    } else if (choice === 'geenstemrecht') {
+        score -= 10; // Slechte keuze
+    }
+
     // Controleer of er een opstand komt
     checkRevolutie();
 
-    // Verberg het schoolstrijd scherm en toon het eindresultaat
-    document.getElementById('school-struggle-screen').style.display = 'none';
+    // Verberg het vrouwenrechten scherm en toon het eindresultaat
+    document.getElementById('women-rights-screen').style.display = 'none';
     document.getElementById('end-screen').style.display = 'block';
-    
+
     // Als er geen opstand is, toon de score
     if (!opstand) {
         document.getElementById('score').textContent = score;
@@ -79,12 +111,12 @@ function checkRevolutie() {
 
 // Functie om de democratische score te berekenen
 function getResult() {
-    if (score > 30) {
-        return "Nederland is zeer democratisch geworden!";
-    } else if (score > 15) {
-        return "Nederland is redelijk democratisch.";
+    if (score >= 60) {
+        return "Nederland is een zeer democratisch land geworden!";
+    } else if (score >= 30) {
+        return "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
     } else {
-        return "Nederland is niet zo democratisch geworden.";
+        return "Nederland is niet zo democratisch geworden en de onvrede leidt tot een opstand!";
     }
 }
 

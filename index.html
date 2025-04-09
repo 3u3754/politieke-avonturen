@@ -47,7 +47,7 @@
     <div class="game-container">
         <h1>Politieke Avonturen: De Opstand</h1>
         <p>Welkom, je speelt als de leider van Nederland in de 19e eeuw. Maak belangrijke keuzes om te bepalen hoe Nederland zich ontwikkelt.</p>
-        
+
         <div id="game-screen">
             <h2>Keuze 1: Welke politieke stroming moet je steunen?</h2>
             <button class="btn" onclick="makeChoice('liberaal')">A) Liberalisme - Meer vrijheid voor de burgers</button>
@@ -68,6 +68,18 @@
             <button class="btn" onclick="makeSchoolStruggleChoice('neutraliteit')">B) Maak een neutraal schoolsysteem</button>
         </div>
 
+        <div id="social-issue-screen" style="display: none;">
+            <h2>Keuze 4: Hoe ga je om met de sociale kwestie?</h2>
+            <button class="btn" onclick="makeSocialChoice('arbeidersrechten')">A) Verbeter de werkomstandigheden voor arbeiders</button>
+            <button class="btn" onclick="makeSocialChoice('geenactie')">B) Er moet geen actie worden ondernomen</button>
+        </div>
+
+        <div id="women-rights-screen" style="display: none;">
+            <h2>Keuze 5: Wat doe je met de rechten van vrouwen?</h2>
+            <button class="btn" onclick="makeWomenRightsChoice('stemrecht')">A) Geef vrouwen stemrecht</button>
+            <button class="btn" onclick="makeWomenRightsChoice('geenstemrecht')">B) Vrouwen krijgen geen stemrecht</button>
+        </div>
+
         <div id="end-screen" style="display: none;">
             <h2>Eindresultaat</h2>
             <p>Je score: <span id="score"></span></p>
@@ -83,7 +95,7 @@
         </div>
     </div>
 
-    <!-- Verwijs naar game.js voor de logica -->
     <script src="game.js"></script>
 
-</
+</body>
+</html>

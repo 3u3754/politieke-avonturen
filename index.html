@@ -106,7 +106,7 @@
 
     <script>
         let score = 0; // Score van de speler
-        let maxScore = 75; // Maximale score (3 goede keuzes x 15 punten per keuze)
+        let maxScore = 75; // Maximale score (5 goede keuzes x 15 punten per keuze)
 
         function makeChoice(choice) {
             // Goede keuze
@@ -165,7 +165,7 @@
 
         function getResult() {
             if (score < 45) {
-                // Insluiten van de Rickroll-video met autoplay
+                // Rickroll-video met autoplay
                 document.getElementById('result').innerHTML = "<h3>Je hebt het verknoeid! Je krijgt een rickroll...</h3><iframe width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
                 return "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
             } else if (score >= 60) {

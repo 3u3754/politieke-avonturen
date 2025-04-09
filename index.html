@@ -51,6 +51,11 @@
             width: 80vw;
             height: 45vw;
         }
+
+        .thumbs-up {
+            font-size: 40px;
+            color: green;
+        }
     </style>
 </head>
 <body>
@@ -109,6 +114,7 @@
         <h2>Game Over</h2>
         <p>Je score: <span id="score"></span> / <span id="max-score"></span></p>
         <p id="result"></p>
+        <p id="thumbs-up"></p> <!-- Hier komt de duim omhoog -->
         <button class="button" onclick="restartGame()">Speel opnieuw</button>
     </div>
 
@@ -178,15 +184,19 @@
         }
 
         function getResult() {
+            let resultText = "";
             if (score < 45) {
                 // Laat de Rickroll-video zien als de score te laag is
                 document.getElementById('rickroll-video').style.display = 'block';
-                return "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
+                resultText = "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
             } else if (score >= 60) {
-                return "Nederland is een zeer democratisch land geworden!";
+                resultText = "Nederland is een zeer democratisch land geworden!";
+                document.getElementById('thumbs-up').textContent = "👍 Goed gedaan!";
             } else if (score >= 45) {
-                return "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
+                resultText = "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
+                document.getElementById('thumbs-up').textContent = "👍 Goed gedaan!";
             }
+            return resultText;
         }
 
         // Functie om het spel opnieuw te starten

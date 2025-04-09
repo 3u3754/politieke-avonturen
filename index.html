@@ -3,86 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politieke Avonturen - Nederlands Geschiedenis</title>
+    <title>Politieke Avonturen - Opstand</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            text-align: center;
-            padding: 50px;
-            background-image: url('https://www.w3schools.com/w3images/forest.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
         }
-
-        h1 {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        .game-container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .button {
+        .btn {
+            padding: 15px;
+            margin: 10px;
+            border: none;
             background-color: #4CAF50;
             color: white;
-            padding: 15px 32px;
-            font-size: 18px;
-            border: none;
             cursor: pointer;
-            margin: 10px;
-        }
-        
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        .choices {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .choice {
-            margin: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            width: 80%;
+            font-size: 16px;
         }
-
-        .choice:hover {
+        .btn:hover {
             background-color: #45a049;
         }
-
-        .image {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
+        #video-container {
+            display: none;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
         }
     </style>
 </head>
 <body>
-    <h1>Welkom bij Politieke Avonturen!</h1>
-    <p id="game-description">Reis door de Nederlandse politiek van 1815 tot 1917. Maak keuzes en ontdek wat er gebeurt!</p>
-    <button class="button" onclick="startGame()">Start Spel</button>
 
-    <div id="game-screen" style="display:none;">
-        <h2 id="question"></h2>
-        <div class="choices">
-            <div class="choice" onclick="makeChoice(1)" id="choice1"></div>
-            <div class="choice" onclick="makeChoice(2)" id="choice2"></div>
-            <div class="choice" onclick="makeChoice(3)" id="choice3"></div>
+    <div class="game-container">
+        <h1>Politieke Avonturen: De Opstand</h1>
+        <p>Welkom, je speelt als de leider van Nederland in de 19e eeuw. Maak belangrijke keuzes om te bepalen hoe Nederland zich ontwikkelt.</p>
+        
+        <div id="game-screen">
+            <h2>Keuze 1: Hoe ga je het land besturen?</h2>
+            <button class="btn" onclick="makeChoice('autocratisch')">A) Autocratisch - Beperk de vrijheid</button>
+            <button class="btn" onclick="makeChoice('liberaal')">B) Liberale benadering - Meer vrijheid, maar grip houden</button>
+            <button class="btn" onclick="makeChoice('democratisch')">C) Democratisch - Geef meer mensen invloed</button>
         </div>
-        <img id="image" class="image" src="" alt="">
+
+        <div id="video-container">
+            <h2>De Opstand!</h2>
+            <p>Door je slechte keuzes is er een opstand uitgebroken!</p>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button class="btn" onclick="restartGame()">Speel opnieuw</button>
+        </div>
     </div>
 
-    <div id="result-screen" style="display:none;">
-        <h2>Jouw Uitkomst</h2>
-        <p id="result"></p>
-        <button class="button" onclick="restartGame()">Speel Opnieuw</button>
-    </div>
+    <script>
+        // Functie die de keuze van de speler verwerkt
+        function makeChoice(choice) {
+            var gameScreen = document.getElementById('game-screen');
+            var videoContainer = document.getElementById('video-container');
 
-    <script src="game.js"></script>
+            if (choice === 'autocratisch') {
+                // Verkeerde keuze leidt tot opstand
+                gameScreen.style.display = 'none';
+                videoContainer.style.display = 'block';
+            } else if (choice === 'liberaal') {
+                // Neutraal scenario
+                gameScreen.style.display = 'none';
+                alert('Je hebt gekozen voor een liberale benadering. Er ontstaan spanningen, maar geen opstand.');
+            } else if (choice === 'democratisch') {
+                // Goede keuze leidt tot positieve uitkomst
+                gameScreen.style.display = 'none';
+                alert('Je hebt gekozen voor een democratische benadering! Nederland ontwikkelt zich rustig en stabiel.');
+            }
+        }
+
+        // Functie om het spel opnieuw te starten
+        function restartGame() {
+            location.reload();
+        }
+    </script>
+
 </body>
 </html>

@@ -1,7 +1,8 @@
 let choices = []; // Array om keuzes van de speler op te slaan
 let score = 0; // Score om de democratische waarde van Nederland te berekenen
+let maxScore = 100; // Maximale score (aantal mogelijke punten)
 
-// Functie voor het maken van keuzes over de politieke stromingen
+// Functie voor het maken van keuzes over de politieke stroming
 function makeChoice(choice) {
     choices.push(choice); // Voeg de keuze toe aan de array
     if (choice === 'liberaal') {
@@ -75,18 +76,21 @@ function makeWomenRightsChoice(choice) {
     document.getElementById('end-screen').style.display = 'block';
 
     // Toon de score en de uitslag
-    document.getElementById('score').textContent = `${score} / 5`;
+    document.getElementById('score').textContent = `${score}`;
+    document.getElementById('max-score').textContent = `${maxScore}`;
     document.getElementById('result').textContent = getResult();
 }
 
 // Functie om de democratische score te berekenen
 function getResult() {
-    if (score >= 60) {
+    if (score < 30) {
+        // Insluiten van de Rickroll-video met autoplay
+        document.getElementById('result').innerHTML = "<h3>Je hebt het verknoeid! Je krijgt een rickroll...</h3><iframe width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+        return "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
+    } else if (score >= 60) {
         return "Nederland is een zeer democratisch land geworden!";
     } else if (score >= 30) {
         return "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
-    } else {
-        return "Nederland is niet zo democratisch geworden. De onvrede leidt tot een opstand!";
     }
 }
 

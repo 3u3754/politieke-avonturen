@@ -3,92 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politieke Avonturen - De Opstand</title>
+    <title>Politieke Avonturen</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f2f2f2;
+            text-align: center;
             margin: 0;
             padding: 0;
         }
-        .game-container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .btn {
-            padding: 15px;
-            margin: 10px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-        #end-screen {
+
+        .game-screen, .policy-screen, .school-struggle-screen, .social-issue-screen, .women-rights-screen, .end-screen {
             display: none;
         }
-        .score-container {
-            margin: 20px 0;
+
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .choices {
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        <h1>Politieke Avonturen: De Opstand</h1>
-        <p>Welkom, je speelt als de leider van Nederland in de 19e eeuw. Maak belangrijke keuzes om te bepalen hoe Nederland zich ontwikkelt.</p>
-
-        <div id="game-screen">
-            <h2>Keuze 1: Welke politieke stroming moet je steunen?</h2>
-            <button class="btn" onclick="makeChoice('liberaal')">A) Liberalisme - Meer vrijheid voor de burgers</button>
-            <button class="btn" onclick="makeChoice('socialisme')">B) Socialisme - Meer rechten voor de arbeiders</button>
-            <button class="btn" onclick="makeChoice('confessionalisme')">C) Confessionalisme - Godsdienst is belangrijk in het beleid</button>
-        </div>
-
-        <div id="policy-screen" style="display: none;">
-            <h2>Keuze 2: Wat doe je met het kiesrecht?</h2>
-            <button class="btn" onclick="makePolicyChoice('beperk')">A) Beperk het kiesrecht tot rijke mannen</button>
-            <button class="btn" onclick="makePolicyChoice('uitbreid')">B) Breid het kiesrecht uit naar alle mannen</button>
-            <button class="btn" onclick="makePolicyChoice('algemeen')">C) Geef vrouwen ook kiesrecht</button>
-        </div>
-
-        <div id="school-struggle-screen" style="display: none;">
-            <h2>Keuze 3: Wat doe je met de schoolstrijd?</h2>
-            <button class="btn" onclick="makeSchoolStruggleChoice('schoolstrijd')">A) Steun de confessionele scholen</button>
-            <button class="btn" onclick="makeSchoolStruggleChoice('neutraliteit')">B) Maak een neutraal schoolsysteem</button>
-        </div>
-
-        <div id="social-issue-screen" style="display: none;">
-            <h2>Keuze 4: Hoe ga je om met de sociale kwestie?</h2>
-            <button class="btn" onclick="makeSocialChoice('arbeidersrechten')">A) Verbeter de werkomstandigheden voor arbeiders</button>
-            <button class="btn" onclick="makeSocialChoice('geenactie')">B) Er moet geen actie worden ondernomen</button>
-        </div>
-
-        <div id="women-rights-screen" style="display: none;">
-            <h2>Keuze 5: Wat doe je met de rechten van vrouwen?</h2>
-            <button class="btn" onclick="makeWomenRightsChoice('stemrecht')">A) Geef vrouwen stemrecht</button>
-            <button class="btn" onclick="makeWomenRightsChoice('geenstemrecht')">B) Vrouwen krijgen geen stemrecht</button>
-        </div>
-
-        <div id="end-screen" style="display: none;">
-            <h2>Eindresultaat</h2>
-            <div class="score-container">
-                <p>Je score: <span id="score"></span> van <span id="max-score"></span></p>
-            </div>
-            <p id="result"></p>
-            <button class="btn" onclick="restartGame()">Speel opnieuw</button>
+    <h1>Politieke Avonturen - Het Democratiseringsspel</h1>
+    
+    <!-- Game Screen -->
+    <div id="game-screen" class="game-screen" style="display: block;">
+        <h2>Vraag 1: Welke politieke stroming ondersteunt de vrijheid van het individu en beperkte overheidsbemoeienis?</h2>
+        <div class="choices">
+            <button class="button" onclick="makeChoice('liberaal')">Liberalisme</button>
+            <button class="button" onclick="makeChoice('socialisme')">Socialisme</button>
+            <button class="button" onclick="makeChoice('confessionalisme')">Confessionalisme</button>
         </div>
     </div>
 
-    <script src="game.js"></script>
+    <!-- Policy Screen -->
+    <div id="policy-screen" class="policy-screen">
+        <h2>Vraag 2: Hoe zou het kiesrecht het beste uitgebreid moeten worden?</h2>
+        <div class="choices">
+            <button class="button" onclick="makePolicyChoice('uitbreid')">Uitbreiden naar meer mensen</button>
+            <button class="button" onclick="makePolicyChoice('algemeen')">Algemeen kiesrecht voor iedereen</button>
+            <button class="button" onclick="makePolicyChoice('beperk')">Beperk het kiesrecht</button>
+        </div>
+    </div>
+
+    <!-- School Struggle Screen -->
+    <div id="school-struggle-screen" class="school-struggle-screen">
+        <h2>Vraag 3: Wat moet de overheid doen met betrekking tot de schoolstrijd?</h2>
+        <div class="choices">
+            <button class="button" onclick="makeSchoolStruggleChoice('schoolstrijd')">Het onderwijs moet gescheiden blijven</button>
+            <button class="button" onclick="makeSchoolStruggleChoice('neutraliteit')">Neutraal en inclusief onderwijs</button>
+        </div>
+    </div>
+
+    <!-- Social Issues Screen -->
+    <div id="social-issue-screen" class="social-issue-screen">
+        <h2>Vraag 4: Wat zou de overheid moeten doen voor de arbeidersklasse?</h2>
+        <div class="choices">
+            <button class="button" onclick="makeSocialChoice('arbeidersrechten')">Arbeidersrechten verbeteren</button>
+            <button class="button" onclick="makeSocialChoice('geenactie')">Geen actie ondernemen</button>
+        </div>
+    </div>
+
+    <!-- Women Rights Screen -->
+    <div id="women-rights-screen" class="women-rights-screen">
+        <h2>Vraag 5: Moet vrouwen het recht krijgen om te stemmen?</h2>
+        <div class="choices">
+            <button class="button" onclick="makeWomenRightsChoice('stemrecht')">Ja, vrouwen moeten stemmen</button>
+            <button class="button" onclick="makeWomenRightsChoice('geenstemrecht')">Nee, vrouwen mogen niet stemmen</button>
+        </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="end-screen">
+        <h2>Game Over</h2>
+        <p>Je score: <span id="score"></span> / <span id="max-score"></span></p>
+        <p id="result"></p>
+        <button class="button" onclick="restartGame()">Speel opnieuw</button>
+    </div>
+
+    <script>
+        let score = 0; // Score van de speler
+        let maxScore = 75; // Maximale score (3 goede keuzes x 15 punten per keuze)
+
+        function makeChoice(choice) {
+            // Goede keuze
+            if (choice === 'liberaal') {
+                score += 15;
+            }
+            // Verberg de vraag en toon de volgende vraag
+            document.getElementById('game-screen').style.display = 'none';
+            document.getElementById('policy-screen').style.display = 'block';
+        }
+
+        function makePolicyChoice(choice) {
+            // Goede keuze
+            if (choice === 'algemeen') {
+                score += 15;
+            }
+            // Verberg het beleidsscherm en toon het schoolstrijd scherm
+            document.getElementById('policy-screen').style.display = 'none';
+            document.getElementById('school-struggle-screen').style.display = 'block';
+        }
+
+        function makeSchoolStruggleChoice(choice) {
+            // Goede keuze
+            if (choice === 'neutraliteit') {
+                score += 15;
+            }
+            // Verberg het schoolstrijd scherm en toon het sociale kwesties scherm
+            document.getElementById('school-struggle-screen').style.display = 'none';
+            document.getElementById('social-issue-screen').style.display = 'block';
+        }
+
+        function makeSocialChoice(choice) {
+            // Goede keuze
+            if (choice === 'arbeidersrechten') {
+                score += 15;
+            }
+            // Verberg het sociale kwestie scherm en toon de vrouwenrechten scherm
+            document.getElementById('social-issue-screen').style.display = 'none';
+            document.getElementById('women-rights-screen').style.display = 'block';
+        }
+
+        function makeWomenRightsChoice(choice) {
+            // Goede keuze
+            if (choice === 'stemrecht') {
+                score += 15;
+            }
+            // Toon het eindresultaat
+            document.getElementById('women-rights-screen').style.display = 'none';
+            document.getElementById('end-screen').style.display = 'block';
+
+            // Toon de score en de uitslag
+            document.getElementById('score').textContent = `${score}`;
+            document.getElementById('max-score').textContent = `${maxScore}`;
+            document.getElementById('result').textContent = getResult();
+        }
+
+        function getResult() {
+            if (score < 45) {
+                // Insluiten van de Rickroll-video met autoplay
+                document.getElementById('result').innerHTML = "<h3>Je hebt het verknoeid! Je krijgt een rickroll...</h3><iframe width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                return "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
+            } else if (score >= 60) {
+                return "Nederland is een zeer democratisch land geworden!";
+            } else if (score >= 45) {
+                return "Nederland is redelijk democratisch, maar er is nog werk aan de winkel.";
+            }
+        }
+
+        // Functie om het spel opnieuw te starten
+        function restartGame() {
+            location.reload();
+        }
+    </script>
 
 </body>
 </html>

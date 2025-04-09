@@ -43,6 +43,14 @@
         .button:hover {
             background-color: #45a049;
         }
+
+        /* Zorg ervoor dat de video groot en gecentreerd wordt */
+        .rickroll-video {
+            display: none;
+            margin-top: 20px;
+            width: 80vw;
+            height: 45vw;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +110,12 @@
         <p>Je score: <span id="score"></span> / <span id="max-score"></span></p>
         <p id="result"></p>
         <button class="button" onclick="restartGame()">Speel opnieuw</button>
+    </div>
+
+    <!-- De Rickroll-video -->
+    <div id="rickroll-video" class="rickroll-video">
+        <h3>Je hebt het verknoeid! Je krijgt een rickroll...</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <script>
@@ -165,19 +179,8 @@
 
         function getResult() {
             if (score < 45) {
-                // Dynamisch toevoegen van de Rickroll-video via JavaScript
-                let iframe = document.createElement("iframe");
-                iframe.setAttribute("width", "560");
-                iframe.setAttribute("height", "315");
-                iframe.setAttribute("src", "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1");
-                iframe.setAttribute("frameborder", "0");
-                iframe.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
-                iframe.setAttribute("allowfullscreen", "");
-
-                // Voeg de iframe toe aan de pagina
-                document.getElementById('result').innerHTML = "<h3>Je hebt het verknoeid! Je krijgt een rickroll...</h3>";
-                document.getElementById('result').appendChild(iframe);
-
+                // Laat de Rickroll-video zien als de score te laag is
+                document.getElementById('rickroll-video').style.display = 'block';
                 return "Nederland is niet zo democratisch geworden... je hebt de opstand veroorzaakt! Je krijgt een rickroll.";
             } else if (score >= 60) {
                 return "Nederland is een zeer democratisch land geworden!";
